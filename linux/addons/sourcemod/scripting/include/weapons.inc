@@ -190,7 +190,7 @@ new const String:WeaponModels[WeaponId][] =
 	""
 };
 
-new const WeaponSlots[_:WeaponId] =
+new const WeaponSlots[56] =
 {
 	-1, // WEPID_NONE
 	1,  // WEPID_PISTOL
@@ -281,7 +281,7 @@ stock GetSlotFromWeaponId(WeaponId:wepid)
  */
 stock bool:IsValidWeaponId(WeaponId:wepid)
 {
-	return wepid >= WEPID_NONE && wepid < WeaponId;
+	return wepid >= WEPID_NONE && wepid < view_as<WeaponId>(56);
 }
 
 /**
@@ -320,7 +320,7 @@ stock WeaponId:WeaponNameToId(const String:weaponName[])
 static InitWeaponNamesTrie()
 {
 	hWeaponNamesTrie = CreateTrie();
-	for(new i = 0; i < _:WeaponId; i++)
+	for(new i = 0; i < 56; i++)
 	{
 		SetTrieValue(hWeaponNamesTrie, WeaponNames[WeaponId:i], i);
 	}
